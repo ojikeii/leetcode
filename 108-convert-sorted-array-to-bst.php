@@ -22,13 +22,19 @@ class Solution
      */
     function sortedArrayToBST($nums)
     {
-        $count = count($nums);
-        if ($count === 0) return null;
+        return $this->convert($nums, 0, count($nums) - 1);
+    }
 
-        $middle = ($count % 2 === 0) ? $count / 2  - 1 : ($count - 1) / 2;
-        $leftNums = ($middle > 0) ? array_slice($nums, 0, $middle) : [];
-        $rightNums = ($middle < $count - 1) ? array_slice($nums, $middle + 1, $count - $middle - 1) : [];
+    function convert($nums, $left, $right)
+    {
+        if ($right < $left) return null;
 
-        return new TreeNode($nums[$middle], $this->sortedArrayToBST($leftNums), $this->sortedArrayToBST($rightNums));
+        $middle = $left + (int)(($right - $left) / 2);
+
+        return new TreeNode(
+            $nums[$middle],
+            $this->convert($nums, $left, $middle - 1),
+            $this->convert($nums, $middle + 1, $right)
+        );
     }
 }

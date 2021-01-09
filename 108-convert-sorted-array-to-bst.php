@@ -29,7 +29,7 @@ class Solution
     {
         if ($right < $left) return null;
 
-        $middle = $left + (int)(($right - $left) / 2);
+        $middle = $left + intdiv($right - $left, 2);
 
         return new TreeNode(
             $nums[$middle],

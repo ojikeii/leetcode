@@ -30,6 +30,7 @@ class Solution {
             for ($i = 0; $i < $count; $i++) {
                 $node = $queue->dequeue();
                 if ($node === null) continue;
+                // ここで level によって先頭に入れるか後ろに入れるか、としてもよい
                 $order[] = $node->val;
                 $queue->enqueue($node->left);
                 $queue->enqueue($node->right);

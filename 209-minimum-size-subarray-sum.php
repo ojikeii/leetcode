@@ -11,6 +11,7 @@ class Solution {
         $N = count($nums);
         if ($N === 0) return 0;
         
+        // sliding window. Runtime: 16ms
         $min = $sum = $right = $left = 0;
         $sum = $nums[$right];
         while ($right < $N && $left <= $right) {

@@ -23,7 +23,6 @@ class Solution {
         // }
 
         // DP2, Runtime: 44ms
-        $count = count($nums);
         $dp = array_fill(0, $count, 10001);
         $dp[0] = $nums[0];
         $max = 1;

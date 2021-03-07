@@ -11,6 +11,7 @@ class Solution
      */
     function kSmallestPairs($nums1, $nums2, $k)
     {
+        if (empty($nums1) || empty($nums2)) return [];
 
         $pq = new SplPriorityQueue();
         $pq->setExtractFlags(SplPriorityQueue::EXTR_PRIORITY);
@@ -35,5 +36,26 @@ class Solution
         }
 
         return $ret;
+
+        // Poor solution
+        /*
+        $sums = [];
+        foreach($nums1 as $n1) {
+            foreach($nums2 as $n2) {
+                $sums[] = [$n1, $n2];
+            }
+        }
+        
+        usort($sums, function ($a, $b) {
+            $s1 = $a[0] + $a[1];
+            $s2 = $b[0] + $b[1];
+            
+            if ($s1 === $s2) return 0;
+            if ($s1 > $s2) return 1;
+            return -1;
+        });
+        
+        return array_slice($sums, 0, $k);
+        */
     }
 }
